@@ -2,4 +2,6 @@
     <string name="app_name">Top Movies</string>
     <string name="poster_of_movie">Постер к фильму</string>
     <string name="poster_of_movie">Постер к фильму</string>
+    <string name="most_popular">Самые популярные</string>
+    <string name="top_rated">Наиболее рейтинговые</string>
 </resources>
