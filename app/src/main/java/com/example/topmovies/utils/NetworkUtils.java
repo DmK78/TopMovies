@@ -2,6 +2,7 @@ package com.example.topmovies.utils;
 
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,18 +33,18 @@ public class NetworkUtils {
     private static final String SORT_BY_POPULARITY = "popularity.desc";
     private static final String SORT_BY_TOP_RATED = "vote_average.desc";
 
-    public static final int POPULARITY = 0;
-    public static final int TOP_RATED = 1;
+    public static final int POPULARITY = 1;
+    public static final int TOP_RATED = 0;
 
 
     private static URL buildURL(int sortBy, int page) {
         URL result = null;
         String methodOfSort;
-        if (POPULARITY == 1) {
+        if (sortBy == 1) {
             methodOfSort = SORT_BY_POPULARITY;
-        } else if (TOP_RATED == 1) {
+        } else
             methodOfSort = SORT_BY_TOP_RATED;
-        }
+
         Uri uri = Uri.parse(BASE_URL).buildUpon()
                 .appendQueryParameter(PARAMS_API_KEY, API_KEY)
                 .appendQueryParameter(PARAMS_LANGUAGE, LANGUAGE_VALUE)
@@ -52,6 +53,7 @@ public class NetworkUtils {
                 .build();
         try {
             result = new URL(uri.toString());
+            Log.i("MyResult", uri.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
