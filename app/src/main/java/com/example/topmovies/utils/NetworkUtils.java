@@ -53,7 +53,6 @@ public class NetworkUtils {
                 .build();
         try {
             result = new URL(uri.toString());
-            Log.i("MyResult", uri.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
