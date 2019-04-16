@@ -24,6 +24,9 @@ public class DetailedActivity extends AppCompatActivity {
     private int id;
     private MainViewModel viewModel;
     private Movie movie;
+    private ImageView imageViewStar;
+
+    private FavoriteMovie favoriteMovie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class DetailedActivity extends AppCompatActivity {
         textViewRating=findViewById(R.id.textViewRating);
         textViewReleaseDate=findViewById(R.id.textViewReleaseDate);
         textViewOverview=findViewById(R.id.textViewOverview);
+        imageViewStar =findViewById(R.id.imageViewAddToFavorite);
+
         Intent intent = getIntent();
         if (intent!=null && intent.hasExtra("id")){
             id = intent.getIntExtra("id",-1);
@@ -50,19 +55,35 @@ public class DetailedActivity extends AppCompatActivity {
         textViewReleaseDate.setText(movie.getReleaseDate());
         textViewOverview.setText(movie.getOverview());
 
+
+        setFavorite();
+
     }
 
     public void onClickChangeFavorite(View view) {
-        FavoriteMovie favoriteMovie = viewModel.getFavoriteMovieByID(id);
+        favoriteMovie = viewModel.getFavoriteMovieByID(id);
         if(favoriteMovie==null){
             viewModel.insertFavoriteMovie(new FavoriteMovie(movie));
             Toast.makeText(this, getString(R.string.added_to_favorites), Toast.LENGTH_SHORT).show();
+
         } else {
             viewModel.deleteFavoriteMovie(favoriteMovie);
             Toast.makeText(this, getString(R.string.deleted_from_favorites), Toast.LENGTH_SHORT).show();
-            /////////////11111
-        }
 
+
+
+        }
+setFavorite();
+
+    }
+
+    private void setFavorite(){
+        favoriteMovie = viewModel.getFavoriteMovieByID(id);
+        if (favoriteMovie==null){
+            imageViewStar.setImageResource(R.drawable.stargrey);
+        }else {
+            imageViewStar.setImageResource(R.drawable.staryellow);
+        }
 
     }
 }
