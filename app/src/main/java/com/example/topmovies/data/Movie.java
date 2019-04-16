@@ -24,7 +24,7 @@ public class Movie {
         this.originalTitle = originalTitle;
         this.overview = overview;
         this.posterPath = posterPath;
-        this.bigPosterPath=posterPath;
+        this.bigPosterPath=bigPosterPath;
         this.backdropPath = backdropPath;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
