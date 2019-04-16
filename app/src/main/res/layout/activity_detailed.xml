@@ -163,5 +163,6 @@
             app:layout_constraintTop_toBottomOf="@+id/imageViewBigPoster"
             app:srcCompat="@drawable/staryellow" />
 
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
