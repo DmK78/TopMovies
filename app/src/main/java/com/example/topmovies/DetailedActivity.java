@@ -60,6 +60,7 @@ public class DetailedActivity extends AppCompatActivity {
         } else {
             viewModel.deleteFavoriteMovie(favoriteMovie);
             Toast.makeText(this, getString(R.string.deleted_from_favorites), Toast.LENGTH_SHORT).show();
+            /////////////11111
         }
 
 
