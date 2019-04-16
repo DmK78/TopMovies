@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -33,6 +36,30 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewTopRatedSort;
 
     private MainViewModel viewModel;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.itemMain:
+                Intent intent = new Intent(this,MainActivity.class);
+                startActivity(intent);
+                break;
+            case  R.id.itemFavorite:
+                Intent intentToFavorite = new Intent(this,FavoriteActivity.class);
+                startActivity(intentToFavorite);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPosterClick(int position) {
                 Movie movie = movieAdapter.getMovies().get(position);
-                Intent intent = new Intent(MainActivity.this,DetailedActivity.class);
-                intent.putExtra("id",movie.getId());
+                Intent intent = new Intent(MainActivity.this, DetailedActivity.class);
+                intent.putExtra("id", movie.getId());
                 startActivity(intent);
             }
         });
