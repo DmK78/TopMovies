@@ -54,8 +54,8 @@ public class DetailedActivity extends AppCompatActivity {
 
     public void onClickChangeFavorite(View view) {
         FavoriteMovie favoriteMovie = viewModel.getFavoriteMovieByID(id);
-        if(movie==null){
-            viewModel.deleteFavoriteMovie(new FavoriteMovie(movie));
+        if(favoriteMovie==null){
+            viewModel.insertFavoriteMovie(new FavoriteMovie(movie));
             Toast.makeText(this, getString(R.string.added_to_favorites), Toast.LENGTH_SHORT).show();
         } else {
             viewModel.deleteFavoriteMovie(favoriteMovie);
