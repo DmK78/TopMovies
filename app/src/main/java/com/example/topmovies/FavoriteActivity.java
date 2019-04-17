@@ -25,6 +25,7 @@ public class FavoriteActivity extends AppCompatActivity {
     private MovieAdapter adapter;
     private MainViewModel viewModel;
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -70,5 +71,18 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
 
+        adapter.setOnPosterClickListener(new MovieAdapter.OnPosterClickListener() {
+            @Override
+            public void onPosterClick(int position) {
+                Movie movie = adapter.getMovies().get(position);
+                Intent intent = new Intent(FavoriteActivity.this, DetailedActivity.class);
+                intent.putExtra("id", movie.getId());
+                startActivity(intent);
+            }
+        });
+
+
     }
+
+
 }
