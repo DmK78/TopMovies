@@ -10,11 +10,19 @@ import java.util.ArrayList;
 
 public class JSONUtils {
 
-    public static final String BASE_POSTER_URL = "https://image.tmdb.org/t/p/";
-    public static final String SMALL_POSTER_SIZE = "w185";
-    public static final String BIG_POSTER_SIZE = "w780";
+
 
     private static final String KEY_RESULTS = "results";
+
+    //для отзывов
+    private static final String KEY_AUTHOR = "author";
+    private static final String KEY_CONTENT = "content";
+
+    //для видео
+    private static final String KEY_OF_VIDEO = "key";
+    private static final String KEY_NAME = "name";
+
+    //вся информация о фильме
     private static final String KEY_VOTE_COUNT = "vote_count";
     private static final String KEY_ID = "id";
     private static final String KEY_TITLE = "title";
@@ -24,6 +32,10 @@ public class JSONUtils {
     private static final String KEY_BACKDROP_PATH = "backdrop_path";
     private static final String KEY_VOTE_AVERAGE = "vote_average";
     private static final String KEY_RELEASE_DATE = "release_date";
+
+    public static final String BASE_POSTER_URL = "https://image.tmdb.org/t/p/";
+    public static final String SMALL_POSTER_SIZE = "w185";
+    public static final String BIG_POSTER_SIZE = "w780";
 
     public static ArrayList<Movie> getMoviesFromJSON(JSONObject jsonObject) {
         ArrayList<Movie> result = new ArrayList<>();
