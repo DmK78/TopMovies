@@ -75,12 +75,17 @@ public class DetailedActivity extends AppCompatActivity {
         }
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         movie = viewModel.getMovieByID(id);
-        Picasso.get().load(movie.getBigPosterPath()).into(imageViewBigPoster);
-        textViewTitle.setText(movie.getTitle());
-        textViewOriginalTitle.setText(movie.getOriginalTitle());
-        textViewRating.setText(String.valueOf(movie.getVoteAverage()));
-        textViewReleaseDate.setText(movie.getReleaseDate());
-        textViewOverview.setText(movie.getOverview());
+        // добавил try-catch - потому что в это месте вылетает NPE
+        try {
+            Picasso.get().load(movie.getBigPosterPath()).into(imageViewBigPoster);
+            textViewTitle.setText(movie.getTitle());
+            textViewOriginalTitle.setText(movie.getOriginalTitle());
+            textViewRating.setText(String.valueOf(movie.getVoteAverage()));
+            textViewReleaseDate.setText(movie.getReleaseDate());
+            textViewOverview.setText(movie.getOverview());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         setFavorite();
