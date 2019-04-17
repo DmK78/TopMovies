@@ -18,6 +18,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.topmovies.adapters.MovieAdapter;
 import com.example.topmovies.data.MainViewModel;
 import com.example.topmovies.data.Movie;
 import com.example.topmovies.utils.JSONUtils;

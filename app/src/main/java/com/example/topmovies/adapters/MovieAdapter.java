@@ -1,4 +1,4 @@
-package com.example.topmovies;
+package com.example.topmovies.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.topmovies.R;
 import com.example.topmovies.data.Movie;
 import com.squareup.picasso.Picasso;
 
@@ -23,11 +24,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         movies = new ArrayList<>();
     }
 
-    interface OnPosterClickListener {
+    public interface OnPosterClickListener {
         void onPosterClick(int position);
     }
 
-    interface OnReachOfEndListener {
+    public interface OnReachOfEndListener {
         void onReachEnd();
     }
 
